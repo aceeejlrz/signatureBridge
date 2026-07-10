@@ -1,0 +1,13 @@
+# Received signatures — never publish real signature images
+signatures/
+*.png
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor / tooling
+.claude/
+.vscode/
+.idea/
+.DS_Store
