@@ -100,6 +100,64 @@ python signature_bridge.py --tunnel
 
 ---
 
+## Roadmap
+
+Planned and possible features. **None of these are implemented yet.** The guiding rule stays the same:
+the core must keep running as a single standard-library file, so anything that needs a third-party
+package is opt-in.
+
+### Signing experience
+
+- [ ] **Undo last stroke** — step back one stroke at a time instead of clearing the whole pad.
+- [ ] **Smoother ink** — curve smoothing between touch points so fast signatures don't look jagged.
+- [ ] **Stylus pressure** — vary line width with pen pressure on devices that report it (Apple Pencil,
+      S Pen).
+- [ ] **Landscape / full-screen pad** — a wider canvas that uses the whole screen when the phone is
+      rotated.
+- [ ] **Initials mode** — capture a signature *and* a separate set of initials in one session.
+- [ ] **Typed signature fallback** — type your name and pick a handwriting-style font, for anyone who
+      can't or doesn't want to draw.
+- [ ] **Dark mode** — follow the phone's system theme.
+
+### Output & export
+
+- [ ] **SVG export** — save the signature as a resizable vector that stays sharp at any size.
+- [ ] **Auto-trim** — crop empty space around the signature so it drops cleanly into documents.
+- [ ] **Metadata sidecar** — write a small `.json` next to each PNG with the timestamp, session ID, and a
+      SHA-256 hash of the image, to make the audit trail tamper-evident.
+- [ ] **Sign a PDF** *(opt-in)* — open a PDF on the computer, drag the received signature onto a page,
+      and save a signed copy.
+
+### Workflow & automation
+
+- [ ] **One-shot mode (`--once`)** — exit after the first signature and print the saved file path, so
+      other scripts can call Signature Bridge and use the result.
+- [ ] **Webhook (`--post-to URL`)** — forward each received signature to another app as an HTTP POST.
+- [ ] **Multiple signers** — a queue of signers in one session, each with their own PIN, with files
+      named by signer.
+- [ ] **Desktop notification** — a system notification (and optional auto-copy to clipboard) when a
+      signature arrives.
+
+### Connection & security
+
+- [ ] **Isolation auto-detect** — if the phone hasn't connected after a short wait, show a hint on the
+      computer page suggesting `--tunnel`.
+- [ ] **HTTPS on the LAN** — optional self-signed certificate so local traffic is encrypted too.
+- [ ] **One-time links** — invalidate the link and PIN after a signature is accepted.
+- [ ] **Configurable session lifetime (`--ttl`)** — change the one-hour expiry.
+- [ ] **Longer PINs (`--pin-length`)** — 6+ digits for extra protection on public tunnels.
+
+### Setup & distribution
+
+- [ ] **Standalone executable** — a Windows `.exe` / macOS app so non-developers don't need Python.
+- [ ] **`pipx install` support** — run it as a `signature-bridge` command from anywhere.
+- [ ] **Tests & CI** — automated tests for the server endpoints and PIN lockout, run on Windows, macOS,
+      and Linux.
+
+Have an idea or want to pick one of these up? Open an issue or pull request.
+
+---
+
 ## Notes
 
 - Works on Windows, macOS, and Linux. Console output is UTF‑8‑safe, including on Windows consoles.
