@@ -206,6 +206,7 @@ DESKTOP_HTML = """<!DOCTYPE html>
 </div>
 <div class="toast" id="toast">Saved ✓</div>
 
+
 <script>
 (function(){
   let sid = null, lastPng = null, timer = null;
